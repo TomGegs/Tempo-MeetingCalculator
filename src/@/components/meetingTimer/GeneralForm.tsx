@@ -28,6 +28,7 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from '../ui/tooltip';
+import { useNavigate } from 'react-router-dom';
 
 export const GeneralForm = () => {
     const [numPeopleValue, setNumPeopleValue] = useState<number>(1);
@@ -38,6 +39,7 @@ export const GeneralForm = () => {
     });
 
     const { setValue } = form;
+    const navigate = useNavigate();
 
     async function handleNumPeopleIncrease() {
         return new Promise<void>((resolve) => {
@@ -45,8 +47,6 @@ export const GeneralForm = () => {
                 const newNumPeopleValue = prevNumPeopleValue + 1;
                 if (newNumPeopleValue <= 100) {
                     setValue('numPeople', newNumPeopleValue);
-                    console.log(newNumPeopleValue);
-                    console.log(form.getValues('numPeople'));
                     return newNumPeopleValue;
                 }
                 return prevNumPeopleValue;
@@ -61,8 +61,6 @@ export const GeneralForm = () => {
                 const newNumPeopleValue = prevNumPeopleValue - 1;
                 if (newNumPeopleValue >= 1) {
                     setValue('numPeople', newNumPeopleValue);
-                    console.log(newNumPeopleValue);
-                    console.log(form.getValues('numPeople'));
                     return newNumPeopleValue;
                 }
                 return prevNumPeopleValue;
@@ -82,7 +80,7 @@ export const GeneralForm = () => {
         if (!isValid) {
             return;
         }
-        console.log('data', data);
+        navigate('/timer', { state: { formData: data } });
     }
 
     const timePeriodStyle =
@@ -90,7 +88,6 @@ export const GeneralForm = () => {
 
     return (
         <Form {...form}>
-            <div>{numPeopleValue}</div>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 {/* Number of people attending */}
                 <FormField

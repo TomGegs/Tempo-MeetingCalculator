@@ -27,7 +27,7 @@ export function Home() {
                     <SheetTrigger asChild>
                         <Button
                             variant="secondary"
-                            className="delay-1.5s mx-auto mb-10 flex w-full translate-y-8 opacity-0 duration-200 animate-out fade-in-100 fill-mode-forwards"
+                            className="mx-auto mb-10 flex w-full translate-y-8 opacity-0 duration-200 animate-out fade-in-100 delay-1.5s fill-mode-forwards"
                         >
                             Begin
                         </Button>
@@ -44,7 +44,7 @@ export function Home() {
                     <DialogTrigger asChild>
                         <Button
                             variant="secondary"
-                            className="delay-1.5s mx-auto mb-10 flex w-[25%] opacity-0 duration-200 animate-out fade-in-100 fill-mode-forwards"
+                            className="mx-auto mb-10 flex w-[25%] opacity-0 duration-200 animate-out fade-in-100 delay-1.5s fill-mode-forwards"
                         >
                             Begin
                         </Button>
