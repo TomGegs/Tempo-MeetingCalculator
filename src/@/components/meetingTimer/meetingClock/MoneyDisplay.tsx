@@ -27,7 +27,7 @@ export const MoneyDisplay = ({
                 ${costOfMeeting.toFixed(2)}
             </div>
             <div
-                className={`absolute bottom-10 right-4 flex -rotate-90 text-lg tracking-wide delay-500 duration-300 ${
+                className={`absolute bottom-10 right-4 flex -rotate-90 text-lg tracking-wide delay-500 duration-300 lg:bottom-16 ${
                     triggerOpacity ? 'opacity-100' : 'opacity-0'
                 }`}
             >

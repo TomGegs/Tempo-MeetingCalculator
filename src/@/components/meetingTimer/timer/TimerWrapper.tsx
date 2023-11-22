@@ -24,7 +24,7 @@ export const TimerWrapper = () => {
         'text-[3rem] md:text-[4rm] lg:text-[6rem] xl:text-[8rem] 2xl:text-[9rem] font-extrabold text-center tracking-tight';
 
     return (
-        <main className="grid h-screen w-full select-none grid-rows-[6fr_6fr_1fr] gap-2 bg-gradient-to-tr from-sky-200 via-accent to-sky-100 p-4 duration-1000 animate-in fade-in">
+        <main className="grid h-screen w-full select-none grid-rows-[6fr_6fr_1fr] gap-0 bg-gradient-to-tr from-sky-200 via-accent to-sky-100 p-4 duration-1000 animate-in fade-in">
             {/* Money Card*/}
             <div
                 className={`relative flex h-full w-full flex-col items-center justify-center`}
@@ -45,7 +45,7 @@ export const TimerWrapper = () => {
                 className={`relative flex h-full w-full flex-1 flex-col items-center justify-center rounded-xl bg-secondary  text-primary ${fontStyle}`}
             />
 
-            <div className="relative flex h-full  w-full items-center justify-center ">
+            <div className="relative mt-1 flex h-full w-full items-center justify-center ">
                 <ControlButtons
                     timerOn={timerOn}
                     time={time}
