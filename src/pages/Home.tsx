@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 export function Home() {
     const [screenMobile, setScreenMobile] = useState(true);
     const [isSheetVisible, setIsSheetVisible] = useState(false);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const handleSheetVisibility = (open: boolean) => {
         setIsSheetVisible(open);
@@ -20,37 +21,43 @@ export function Home() {
     }, [screenMobile]);
 
     return (
-        <main className="flex h-screen w-full flex-col items-center justify-center bg-gradient-to-t from-[#1e1e1e] to-[#191919] p-10 md:p-4">
+        <main
+            className={`flex h-screen w-full flex-col items-center justify-center p-10 transition-colors  duration-1000 md:p-4 ${
+                loading
+                    ? 'bg-gradient-to-tr from-sky-200 via-accent  to-sky-100 duration-1000 animate-out fade-out'
+                    : 'bg-gradient-to-tr from-[#1e1e1e] to-[#191919]'
+            }`}
+        >
             <HeaderCard isSheetVisible={isSheetVisible} />
             {screenMobile ? (
                 <Sheet onOpenChange={handleSheetVisibility}>
                     <SheetTrigger asChild>
                         <Button
-                            variant="secondary"
+                            variant="outline"
                             className="mx-auto mb-10 flex w-full translate-y-8 opacity-0 duration-200 animate-out fade-in-100 delay-1.5s fill-mode-forwards"
                         >
-                            Begin
+                            Get started
                         </Button>
                     </SheetTrigger>
                     <SheetContent
                         side="bottom"
-                        className="mx-auto flex h-[90%] w-full justify-center rounded-t-3xl bg-secondary "
+                        className="h-full w-full bg-transparent"
                     >
-                        <Layout />
+                        <Layout setLoading={setLoading} loading={loading} />
                     </SheetContent>
                 </Sheet>
             ) : (
-                <Dialog onOpenChange={handleSheetVisibility}>
+                <Dialog>
                     <DialogTrigger asChild>
                         <Button
-                            variant="secondary"
+                            variant="outline"
                             className="mx-auto mb-10 flex w-[25%] opacity-0 duration-200 animate-out fade-in-100 delay-1.5s fill-mode-forwards"
                         >
                             Begin
                         </Button>
                     </DialogTrigger>
                     <DialogContent className="max-w-[600px]">
-                        <Layout />
+                        <Layout setLoading={setLoading} loading={loading} />
                     </DialogContent>
                 </Dialog>
             )}
@@ -60,5 +67,3 @@ export function Home() {
 }
 
 export default Home;
-
-// bg-[#2A52BE] - cerulean blue

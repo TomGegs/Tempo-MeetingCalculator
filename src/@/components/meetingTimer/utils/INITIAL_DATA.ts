@@ -57,7 +57,7 @@ export const detailedFormSchema = z.object({
         .number({ required_error: 'Meeting must have at least 1 attendee' })
         .int()
         .min(1)
-        .max(100),
+        .max(100, { message: 'Capacity cannot exceed 100.' }),
 
     personIDTimeFrame: z.enum(['Yearly', 'Monthly', 'Weekly', 'Daily'], {
         required_error: 'Please select a Period.',

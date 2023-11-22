@@ -1,17 +1,38 @@
-import { Typography } from '../../ui/typography';
+import { useEffect, useState } from 'react';
 
 interface MoneyDisplayProps {
     costOfMeeting: number;
+    className?: string;
 }
 
-export const MoneyDisplay: React.FC<MoneyDisplayProps> = ({
+export const MoneyDisplay = ({
     costOfMeeting,
-}) => {
+    className,
+}: MoneyDisplayProps) => {
+    const [triggerOpacity, setTriggerOpacity] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setTriggerOpacity(true);
+        }, 1000);
+    }, [triggerOpacity]);
+
     return (
-        <div className="font text-2xl ">
-            <Typography variant="h1" as="h2" className="text-white">
-                ${costOfMeeting.toFixed(2)} {/* Display formatted cost */}
-            </Typography>
+        <div className={className}>
+            <div
+                className={`duration-300 ${
+                    triggerOpacity ? 'opacity-100' : 'opacity-0'
+                }`}
+            >
+                ${costOfMeeting.toFixed(2)}
+            </div>
+            <div
+                className={`absolute bottom-10 right-4 flex -rotate-90 text-lg tracking-wide delay-500 duration-300 ${
+                    triggerOpacity ? 'opacity-100' : 'opacity-0'
+                }`}
+            >
+                cost
+            </div>
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -30,7 +30,12 @@ import {
 } from '../ui/tooltip';
 import { useNavigate } from 'react-router-dom';
 
-export const GeneralForm = () => {
+type GeneralFormProps = {
+    setLoading: Dispatch<SetStateAction<boolean>>;
+    loading: boolean;
+};
+
+export const GeneralForm = ({ setLoading, loading }: GeneralFormProps) => {
     const [numPeopleValue, setNumPeopleValue] = useState<number>(1);
 
     const form = useForm<GeneralFormValues>({
@@ -69,6 +74,12 @@ export const GeneralForm = () => {
         });
     }
 
+    function handleNumPeopleInput(e: React.ChangeEvent<HTMLInputElement>) {
+        const newValue = parseInt(e.target.value);
+        setNumPeopleValue(newValue);
+        setValue('numPeople', numPeopleValue);
+    }
+
     function handleSalaryInput(e: React.ChangeEvent<HTMLInputElement>) {
         const inputValue = e.target.value;
         const value = inputValue === '' ? '' : parseInt(inputValue);
@@ -76,19 +87,32 @@ export const GeneralForm = () => {
     }
 
     async function onSubmit(data: GeneralFormValues) {
-        const isValid = await form.trigger('avgSalary');
-        if (!isValid) {
-            return;
+        try {
+            const isValidSalary = await form.trigger('avgSalary');
+            const isValidPeople = await form.trigger('numPeople');
+            if (isValidSalary && isValidPeople) {
+                setLoading(true);
+                setTimeout(() => {
+                    navigate('/timer', { state: { formData: data } });
+                    setLoading(false);
+                }, 1000);
+            }
+        } catch (error) {
+            error;
         }
-        navigate('/timer', { state: { formData: data } });
     }
 
     const timePeriodStyle =
-        'flex w-full cursor-pointer flex-col text-xs md:text-base items-center justify-between rounded-md  bg-primary px-5 py-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-popover [&:has([data-state=checked])]:border-primary';
+        'flex w-full cursor-pointer flex-col text-xs md:text-base items-center justify-between rounded-md  bg-muted px-5 py-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-popover [&:has([data-state=checked])]:border-primary';
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className={`space-y-8 ${
+                    loading ? 'duration-1000 animate-out fade-out-0' : ''
+                }`}
+            >
                 {/* Number of people attending */}
                 <FormField
                     control={form.control}
@@ -96,12 +120,12 @@ export const GeneralForm = () => {
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel htmlFor="number of people attending">
-                                <span className="flex flex-row items-center gap-x-2">
+                                <div className="flex flex-row items-center gap-x-2">
                                     Number of People
                                     <TooltipProvider>
                                         <Tooltip>
-                                            <TooltipTrigger>
-                                                <Info className="h-4 w-4" />
+                                            <TooltipTrigger asChild>
+                                                <Info className="h-4 w-4 cursor-pointer" />
                                             </TooltipTrigger>
                                             <TooltipContent>
                                                 <p>
@@ -111,7 +135,7 @@ export const GeneralForm = () => {
                                             </TooltipContent>
                                         </Tooltip>
                                     </TooltipProvider>
-                                </span>
+                                </div>
                             </FormLabel>
                             <div className="flex w-full  items-center space-x-2">
                                 <Button
@@ -131,9 +155,7 @@ export const GeneralForm = () => {
                                         {...field}
                                         placeholder={numPeopleValue.toString()}
                                         onChange={(e) =>
-                                            field.onChange(
-                                                parseInt(e.target.value)
-                                            )
+                                            handleNumPeopleInput(e)
                                         }
                                         min={1}
                                         value={numPeopleValue}
@@ -161,12 +183,12 @@ export const GeneralForm = () => {
                     render={({ field }) => (
                         <FormItem className="space-y-2 ">
                             <FormLabel>
-                                <span className="flex flex-row items-center gap-x-2">
+                                <div className="flex flex-row items-center gap-x-2">
                                     Salary Period
                                     <TooltipProvider>
                                         <Tooltip>
-                                            <TooltipTrigger>
-                                                <Info className="h-4 w-4" />
+                                            <TooltipTrigger asChild>
+                                                <Info className="h-4 w-4 cursor-pointer" />
                                             </TooltipTrigger>
                                             <TooltipContent>
                                                 <p>
@@ -177,7 +199,7 @@ export const GeneralForm = () => {
                                             </TooltipContent>
                                         </Tooltip>
                                     </TooltipProvider>
-                                </span>
+                                </div>
                             </FormLabel>
                             <FormControl>
                                 {/* Period of calculation */}
@@ -187,7 +209,7 @@ export const GeneralForm = () => {
                                     onValueChange={(value) =>
                                         field.onChange(value)
                                     }
-                                    className="grid h-fit w-full grid-cols-4 gap-x-1 rounded-lg bg-primary p-1 text-muted-foreground"
+                                    className="grid h-fit w-full grid-cols-4 gap-x-1 rounded-lg bg-muted p-1 text-muted-foreground"
                                 >
                                     <FormItem className="flex w-full items-center space-x-0 space-y-0">
                                         <FormControl>
@@ -263,12 +285,12 @@ export const GeneralForm = () => {
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel htmlFor="average salary of attendees">
-                                <span className="flex flex-row items-center gap-x-2">
+                                <div className="flex flex-row items-center gap-x-2">
                                     Average Salary of Attendees
                                     <TooltipProvider>
                                         <Tooltip>
-                                            <TooltipTrigger>
-                                                <Info className="h-4 w-4" />
+                                            <TooltipTrigger asChild>
+                                                <Info className="h-4 w-4 cursor-pointer" />
                                             </TooltipTrigger>
                                             <TooltipContent>
                                                 <p>
@@ -278,7 +300,7 @@ export const GeneralForm = () => {
                                             </TooltipContent>
                                         </Tooltip>
                                     </TooltipProvider>
-                                </span>
+                                </div>
                             </FormLabel>
 
                             <FormControl>
@@ -290,6 +312,7 @@ export const GeneralForm = () => {
                                     )} `}
                                     {...field}
                                     onChange={handleSalaryInput}
+                                    min={1}
                                 />
                             </FormControl>
                             <FormMessage />
@@ -297,7 +320,12 @@ export const GeneralForm = () => {
                     )}
                 />
                 <CardFooter>
-                    <Button className="w-full">Start Meeting</Button>
+                    <Button
+                        variant="ghost"
+                        className="z-20 h-full w-full items-center justify-center bg-[#252525] text-white"
+                    >
+                        {loading ? 'Loading...' : 'Start Meeting'}
+                    </Button>
                 </CardFooter>
             </form>
         </Form>

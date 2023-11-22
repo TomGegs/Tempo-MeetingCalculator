@@ -1,3 +1,5 @@
+import { Dispatch } from 'react';
+
 import {
     Card,
     CardContent,
@@ -12,13 +14,19 @@ import {
     TabsList,
     TabsTrigger,
 } from '@/@/components/ui/tabs';
-import { Lock } from 'lucide-react';
+import { Lock, X } from 'lucide-react';
 import { GeneralForm } from './GeneralForm';
 import { DetailedForm } from './DetailedForm';
 import { Attendees } from './Attendees';
 import { SetStateAction, useState } from 'react';
+import { SheetClose } from '../ui/sheet';
 
-export const Layout = () => {
+type LayoutProps = {
+    setLoading: Dispatch<SetStateAction<boolean>>;
+    loading: boolean;
+};
+
+export const Layout = ({ setLoading, loading }: LayoutProps) => {
     const [currentTab, setCurrentTab] = useState('general');
 
     const handleTabChange = (value: SetStateAction<string>) => {
@@ -26,9 +34,17 @@ export const Layout = () => {
     };
 
     return (
-        <div className="h-fit w-full max-w-[800px] self-center ">
-            <Card className="border-0 bg-card">
-                <CardHeader className="">
+        <div
+            className={`flex h-full w-full max-w-[800px]  items-center justify-center ${
+                loading ? 'delay-500 duration-500 animate-out fade-out' : ''
+            }`}
+        >
+            <Card className="relative border-0 bg-card">
+                <SheetClose className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
+                    <X className="h-4 w-4" />
+                    <span className="sr-only">Close</span>
+                </SheetClose>
+                <CardHeader>
                     <CardTitle>
                         {currentTab === 'general'
                             ? 'Estimation Timer'
@@ -48,7 +64,7 @@ export const Layout = () => {
                     className="h-full w-full md:p-2"
                 >
                     <div className="mb-6 px-4 md:px-2">
-                        <TabsList className="grid w-full grid-cols-2  bg-primary">
+                        <TabsList className="grid w-full grid-cols-2">
                             <TabsTrigger value="general">
                                 Estimation
                             </TabsTrigger>
@@ -65,7 +81,10 @@ export const Layout = () => {
                     <TabsContent value="general">
                         <CardContent className="grid">
                             {/* General Form */}
-                            <GeneralForm />
+                            <GeneralForm
+                                setLoading={setLoading}
+                                loading={loading}
+                            />
                         </CardContent>
                     </TabsContent>
 

@@ -40,7 +40,7 @@ export const HeaderCard = ({ isSheetVisible }: HeaderCardProps) => {
                         triggerOpacity ? 'opacity-100' : 'opacity-0'
                     }`}
                 />
-                <span className="text-purple-600 delay-300 duration-500 animate-in fade-in-0 slide-in-from-right ">
+                <span className="text-secondary delay-300 duration-500 animate-in fade-in-0 slide-in-from-right ">
                     meet
                 </span>
             </Typography>
