@@ -54,7 +54,11 @@ export const columns: ColumnDef<DetailedFormValues>[] = [
         cell: ({ row }) => {
             const amount = row.getValue('personIDTimeFrame');
 
-            return <span className="text-right font-medium">{amount}</span>;
+            return (
+                <span className="text-right font-medium">
+                    {amount as 'Yearly' | 'Monthly' | 'Weekly' | 'Daily'}
+                </span>
+            );
         },
     },
     {
