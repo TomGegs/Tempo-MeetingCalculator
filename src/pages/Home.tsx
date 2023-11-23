@@ -67,7 +67,6 @@ export function Home() {
                     </DialogContent>
                 </Dialog>
             )}
-            <div className="absolute" />
         </main>
     );
 }

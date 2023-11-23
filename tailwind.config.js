@@ -86,13 +86,20 @@ export default {
                     },
                     to: { height: 0, opacity: 0 },
                 },
+                gradient: {
+                    '0%, 25%': { backgroundPosition: '-10% 50%' },
+                    '60%': { backgroundPosition: '115% 50%' },
+                    '60.1%, 100%': { backgroundPosition: '115% 50%' },
+                },
             },
             animation: {
                 'accordion-down': 'accordion-down 0.4s ease-in-out',
                 'accordion-up': 'accordion-up 0.4s ease-in-out',
                 flip: 'flip 2s linear infinite',
+                gradient: 'gradient 2s ease-in-out infinite',
             },
             animationDelay: {
+                '4s': '4000ms',
                 '2s': '2s',
                 '1.5s': '1500ms',
             },

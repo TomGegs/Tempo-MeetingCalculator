@@ -20,6 +20,8 @@ import { DetailedForm } from './detailedForm/DetailedForm';
 import { TableWrapper } from './detailedForm/table/TableWrapper';
 import { SetStateAction, useState } from 'react';
 import { SheetClose } from './ui/sheet';
+import logo from '../../assets/logo.png';
+import { FeatureComing } from './FeatureComing';
 
 type FormWrapperProps = {
     setLoading: Dispatch<SetStateAction<boolean>>;
@@ -93,6 +95,7 @@ export const FormWrapper = ({ setLoading, loading }: FormWrapperProps) => {
                         <CardContent className="space-y-2">
                             <DetailedForm />
                             <TableWrapper />
+                            <FeatureComing />
                         </CardContent>
                     </TabsContent>
                 </Tabs>

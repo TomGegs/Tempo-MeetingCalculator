@@ -52,7 +52,7 @@ export const DetailedForm = () => {
                                     Person #
                                     <TooltipProvider>
                                         <Tooltip>
-                                            <TooltipTrigger>
+                                            <TooltipTrigger asChild>
                                                 <Info className="h-4 w-4" />
                                             </TooltipTrigger>
                                             <TooltipContent>
@@ -85,7 +85,7 @@ export const DetailedForm = () => {
                                     Salary
                                     <TooltipProvider>
                                         <Tooltip>
-                                            <TooltipTrigger>
+                                            <TooltipTrigger asChild>
                                                 <Info className="h-4 w-4" />
                                             </TooltipTrigger>
                                             <TooltipContent>
@@ -122,7 +122,7 @@ export const DetailedForm = () => {
                                     Period
                                     <TooltipProvider>
                                         <Tooltip>
-                                            <TooltipTrigger>
+                                            <TooltipTrigger asChild>
                                                 <Info className=" h-4 w-4" />
                                             </TooltipTrigger>
                                             <TooltipContent>
