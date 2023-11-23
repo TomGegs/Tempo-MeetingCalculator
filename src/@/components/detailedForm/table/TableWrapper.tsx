@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { columns } from './TableColumns';
 import { TableDataTable } from './TableDataTable';
-import { DetailedFormValues } from './utils/INITIAL_DATA';
+import { DetailedFormValues } from '../../utils/INITIAL_DATA';
 
 async function getData(): Promise<DetailedFormValues[]> {
-    // Fetch data from your API here.
     return [
         {
             personID: 4,
@@ -29,7 +28,7 @@ async function getData(): Promise<DetailedFormValues[]> {
     ];
 }
 
-export function Attendees() {
+export function TableWrapper() {
     const [data, setData] = useState<DetailedFormValues[]>([]);
 
     useEffect(() => {

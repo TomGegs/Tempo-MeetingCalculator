@@ -15,14 +15,14 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from '../ui/table';
+} from '../../ui/table';
 import { Pagination } from './Pagination';
-import { Collapsible, CollapsibleTrigger } from '../ui/collapsible';
-import { Button } from '../ui/button';
+import { Collapsible, CollapsibleTrigger } from '../../ui/collapsible';
+import { Button } from '../../ui/button';
 import { CollapsibleContent } from '@radix-ui/react-collapsible';
 import { ChevronsUpDown } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { Typography } from '../ui/typography';
+import { Typography } from '../../ui/typography';
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];

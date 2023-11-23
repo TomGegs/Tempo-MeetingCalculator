@@ -18,7 +18,7 @@ import {
     DetailedFormValues,
     detailedFormSchema,
     detailedDefaultValues,
-} from './utils/INITIAL_DATA';
+} from '../utils/INITIAL_DATA';
 import {
     Tooltip,
     TooltipContent,
@@ -41,7 +41,7 @@ export const DetailedForm = () => {
 
     return (
         <Form {...form}>
-            <form className="grid h-full w-full grid-cols-8 justify-center gap-x-2 space-y-8 md:grid-cols-6 md:gap-x-2 ">
+            <form className="relative grid h-full w-full grid-cols-8 justify-center gap-x-2 space-y-8 md:grid-cols-6 md:gap-x-2 ">
                 <FormField
                     control={form.control}
                     name="personID"

@@ -1,5 +1,5 @@
-import { HeaderCard } from '@/@/components/meetingTimer/HeaderCard';
-import { Layout } from '@/@/components/meetingTimer/Layout';
+import { HeroTitle } from '@/@/components/HeroTitle';
+import { FormWrapper } from '@/@/components/FormWrapper';
 import { Button } from '@/@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger } from '@/@/components/ui/dialog';
 import { Sheet, SheetContent, SheetTrigger } from '@/@/components/ui/sheet';
@@ -28,7 +28,7 @@ export function Home() {
                     : 'bg-gradient-to-tr from-[#1e1e1e] to-[#191919]'
             }`}
         >
-            <HeaderCard isSheetVisible={isSheetVisible} />
+            <HeroTitle isSheetVisible={isSheetVisible} />
             {screenMobile ? (
                 <Sheet onOpenChange={handleSheetVisibility}>
                     <SheetTrigger asChild>
@@ -43,7 +43,10 @@ export function Home() {
                         side="bottom"
                         className="h-full w-full bg-transparent"
                     >
-                        <Layout setLoading={setLoading} loading={loading} />
+                        <FormWrapper
+                            setLoading={setLoading}
+                            loading={loading}
+                        />
                     </SheetContent>
                 </Sheet>
             ) : (
@@ -57,7 +60,10 @@ export function Home() {
                         </Button>
                     </DialogTrigger>
                     <DialogContent className="max-w-[600px]">
-                        <Layout setLoading={setLoading} loading={loading} />
+                        <FormWrapper
+                            setLoading={setLoading}
+                            loading={loading}
+                        />
                     </DialogContent>
                 </Dialog>
             )}

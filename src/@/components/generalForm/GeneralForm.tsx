@@ -21,7 +21,7 @@ import {
     GeneralFormValues,
     defaultValues,
     generalFormSchema,
-} from './utils/INITIAL_DATA';
+} from '../utils/INITIAL_DATA';
 import {
     Tooltip,
     TooltipContent,

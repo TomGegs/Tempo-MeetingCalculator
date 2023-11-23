@@ -1,12 +1,12 @@
-import { Typography } from '../ui/typography';
-import logo from '../../../assets/logo.png';
+import { Typography } from './ui/typography';
+import logo from '../../assets/logo.png';
 import { useEffect, useState } from 'react';
 
 type HeaderCardProps = {
     isSheetVisible: boolean;
 };
 
-export const HeaderCard = ({ isSheetVisible }: HeaderCardProps) => {
+export const HeroTitle = ({ isSheetVisible }: HeaderCardProps) => {
     const [triggerOpacity, setTriggerOpacity] = useState(false);
 
     useEffect(() => {

@@ -1,5 +1,5 @@
 import { Undo2 } from 'lucide-react';
-import { Button } from '../../ui/button';
+import { Button } from '../ui/button';
 import { useNavigate } from 'react-router-dom';
 
 export const BackButton = () => {

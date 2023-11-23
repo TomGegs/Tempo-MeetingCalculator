@@ -1,9 +1,9 @@
 import { useLocation } from 'react-router-dom';
-import { useTimerCalculator } from '../@/components/meetingTimer/hooks/useTimerCalculator';
-import { TimerDisplay } from '../@/components/meetingTimer/meetingClock/TimeDisplay';
-import { ControlButtons } from '../@/components/meetingTimer/meetingClock/ControlButtons';
-import { MoneyDisplay } from '../@/components/meetingTimer/meetingClock/MoneyDisplay';
-import { BackButton } from '../@/components/meetingTimer/meetingClock/BackButton';
+import { useTimerCalculator } from '../@/components/hooks/useTimerCalculator';
+import { TimerDisplay } from '../@/components/meetingTimer/TimeDisplay';
+import { ControlButtons } from '../@/components/meetingTimer/ControlButtons';
+import { MoneyDisplay } from '../@/components/meetingTimer/MoneyDisplay';
+import { BackButton } from '../@/components/meetingTimer/BackButton';
 
 export const MeetingTimer = () => {
     const location = useLocation();

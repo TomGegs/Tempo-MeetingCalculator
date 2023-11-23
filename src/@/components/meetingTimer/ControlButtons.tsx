@@ -1,5 +1,5 @@
 import { PlayIcon, PauseIcon, TimerReset } from 'lucide-react';
-import { Button } from '../../ui/button';
+import { Button } from '../ui/button';
 
 interface ControlButtonsProps {
     timerOn: boolean;

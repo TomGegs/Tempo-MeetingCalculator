@@ -15,18 +15,18 @@ import {
     TabsTrigger,
 } from '@/@/components/ui/tabs';
 import { Lock, X } from 'lucide-react';
-import { GeneralForm } from './GeneralForm';
-import { DetailedForm } from './DetailedForm';
-import { Attendees } from './Attendees';
+import { GeneralForm } from './generalForm/GeneralForm';
+import { DetailedForm } from './detailedForm/DetailedForm';
+import { TableWrapper } from './detailedForm/table/TableWrapper';
 import { SetStateAction, useState } from 'react';
-import { SheetClose } from '../ui/sheet';
+import { SheetClose } from './ui/sheet';
 
-type LayoutProps = {
+type FormWrapperProps = {
     setLoading: Dispatch<SetStateAction<boolean>>;
     loading: boolean;
 };
 
-export const Layout = ({ setLoading, loading }: LayoutProps) => {
+export const FormWrapper = ({ setLoading, loading }: FormWrapperProps) => {
     const [currentTab, setCurrentTab] = useState('general');
 
     const handleTabChange = (value: SetStateAction<string>) => {
@@ -40,7 +40,7 @@ export const Layout = ({ setLoading, loading }: LayoutProps) => {
             }`}
         >
             <Card className="relative border-0 bg-card">
-                <SheetClose className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
+                <SheetClose className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary md:hidden">
                     <X className="h-4 w-4" />
                     <span className="sr-only">Close</span>
                 </SheetClose>
@@ -92,7 +92,7 @@ export const Layout = ({ setLoading, loading }: LayoutProps) => {
                     <TabsContent value="detailed">
                         <CardContent className="space-y-2">
                             <DetailedForm />
-                            <Attendees />
+                            <TableWrapper />
                         </CardContent>
                     </TabsContent>
                 </Tabs>
