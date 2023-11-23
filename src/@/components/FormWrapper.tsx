@@ -20,7 +20,6 @@ import { DetailedForm } from './detailedForm/DetailedForm';
 import { TableWrapper } from './detailedForm/table/TableWrapper';
 import { SetStateAction, useState } from 'react';
 import { SheetClose } from './ui/sheet';
-import logo from '../../assets/logo.png';
 import { FeatureComing } from './FeatureComing';
 
 type FormWrapperProps = {
