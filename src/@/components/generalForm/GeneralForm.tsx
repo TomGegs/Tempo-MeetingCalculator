@@ -119,7 +119,7 @@ export const GeneralForm = ({ setLoading, loading }: GeneralFormProps) => {
                     name="numPeople"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel htmlFor="number of people attending">
+                            <FormLabel htmlFor="numPeople">
                                 <div className="flex flex-row items-center gap-x-2">
                                     Number of People
                                     <TooltipProvider>
@@ -150,6 +150,7 @@ export const GeneralForm = ({ setLoading, loading }: GeneralFormProps) => {
                                 </Button>
                                 <FormControl>
                                     <Input
+                                        id="numPeople"
                                         type="number"
                                         className="w-full text-center"
                                         {...field}
@@ -182,7 +183,7 @@ export const GeneralForm = ({ setLoading, loading }: GeneralFormProps) => {
                     defaultValue="Yearly"
                     render={({ field }) => (
                         <FormItem className="space-y-2 ">
-                            <FormLabel>
+                            <FormLabel htmlFor="timeFrame">
                                 <div className="flex flex-row items-center gap-x-2">
                                     Salary Period
                                     <TooltipProvider>
@@ -205,6 +206,7 @@ export const GeneralForm = ({ setLoading, loading }: GeneralFormProps) => {
                                 {/* Period of calculation */}
 
                                 <RadioGroup
+                                    id="timeFrame"
                                     {...field}
                                     onValueChange={(value) =>
                                         field.onChange(value)
@@ -284,7 +286,7 @@ export const GeneralForm = ({ setLoading, loading }: GeneralFormProps) => {
                     name="avgSalary"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel htmlFor="average salary of attendees">
+                            <FormLabel htmlFor="avgSalary">
                                 <div className="flex flex-row items-center gap-x-2">
                                     Average Salary of Attendees
                                     <TooltipProvider>
@@ -305,6 +307,7 @@ export const GeneralForm = ({ setLoading, loading }: GeneralFormProps) => {
 
                             <FormControl>
                                 <Input
+                                    id="avgSalary"
                                     type="number"
                                     className="w-full text-center"
                                     placeholder={`$ ${form.watch(
