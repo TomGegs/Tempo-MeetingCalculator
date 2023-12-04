@@ -4,8 +4,12 @@ import { TimerDisplay } from '../@/components/meetingTimer/TimeDisplay';
 import { ControlButtons } from '../@/components/meetingTimer/ControlButtons';
 import { MoneyDisplay } from '../@/components/meetingTimer/MoneyDisplay';
 import { BackButton } from '../@/components/meetingTimer/BackButton';
+// import { useEffect, useState } from 'react';
 
 export const MeetingTimer = () => {
+    // const [backgroundFillPercentage, setBackgroundFillPercentage] = useState(0);
+    // const [timerCount, setTimerCount] = useState(0);
+
     const location = useLocation();
     const formData = location.state?.formData;
 
@@ -20,11 +24,35 @@ export const MeetingTimer = () => {
         formData,
     });
 
+    // useEffect(() => {
+    //     if (timerOn) {
+    //         const intervalId = setInterval(() => {
+    //             setTimerCount((prev) => {
+    //                 const nextCount = prev + 1;
+    //                 if (nextCount !== 0 && nextCount % 9 === 0) {
+    //                     setBackgroundFillPercentage((prevPercentage) =>
+    //                         prevPercentage < 100 ? prevPercentage + 1 : 100
+    //                     );
+    //                 }
+    //                 return nextCount;
+    //             });
+    //         }, 1000);
+    //         return () => clearInterval(intervalId);
+    //     } else {
+    //         setTimerCount(0);
+    //         if (time === 0) {
+    //             setBackgroundFillPercentage(0);
+    //         }
+    //     }
+    // }, [timerOn, time]);
+
     const fontStyle =
-        'text-[3rem] md:text-[4rm] lg:text-[6rem] xl:text-[8rem] 2xl:text-[9rem] font-extrabold text-center tracking-tight';
+        'text-[3rem] md:text-[4rm] lg:text-[6rem] xl:text-[8rem] 2xl:text-[9rem] font-extrabold text-center tracking-tight ';
 
     return (
-        <main className="grid h-screen w-full select-none grid-rows-[6fr_6fr_1fr] gap-0 bg-gradient-to-tr from-sky-200 via-accent to-sky-100 p-4 duration-1000 animate-in fade-in">
+        <main
+            className={`grid h-[calc(100svh)] w-full select-none grid-rows-[6fr_6fr_1fr] gap-0 bg-gradient-to-tr from-sky-200 via-accent to-sky-100 p-4 duration-1000 animate-in fade-in md:h-[100dvh]`}
+        >
             {/* Money Card*/}
             <div
                 className={`relative flex h-full w-full flex-col items-center justify-center`}
@@ -35,14 +63,15 @@ export const MeetingTimer = () => {
                 </div>
                 <MoneyDisplay
                     costOfMeeting={costTracker}
-                    className={`-mt-0.5 flex h-full w-full basis-4/5 items-center justify-center rounded-xl rounded-tr-none bg-primary pb-[40px] text-secondary ${fontStyle}`}
+                    className={`relative -mt-0.5 flex h-full w-full basis-4/5 items-center justify-center rounded-xl rounded-tr-none pb-[40px] text-secondary ${fontStyle} bg-primary `}
+                    // opacity-[${backgroundFillPercentage}%]
                 />
             </div>
 
             {/* Time Card */}
             <TimerDisplay
                 time={time}
-                className={`relative flex h-full w-full flex-1 flex-col items-center justify-center rounded-xl bg-secondary  text-primary ${fontStyle}`}
+                className={`relative flex h-full w-full flex-1 flex-col items-center justify-center rounded-xl bg-secondary text-primary ${fontStyle}`}
             />
 
             <div className="relative mt-1 flex h-full w-full items-center justify-center ">

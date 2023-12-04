@@ -22,7 +22,7 @@ export function Home() {
 
     return (
         <main
-            className={`flex h-screen w-full flex-col items-center justify-center p-10 transition-colors  duration-1000 md:p-4 ${
+            className={`flex h-[calc(100svh)] w-full flex-col items-center justify-center p-10 transition-colors duration-1000  md:h-screen md:p-4 ${
                 loading
                     ? 'bg-gradient-to-tr from-sky-200 via-accent  to-sky-100 duration-1000 animate-out fade-out'
                     : 'bg-gradient-to-tr from-[#1e1e1e] to-[#191919]'
