@@ -14,7 +14,7 @@ econoMeet helps users understand the cost of meeting overload and to encourage t
 
 ## Screenshots
 
-![Preview of the application](./assets/econoMeetPreview.gif)
+![Preview of the application](./public/econoMeetPreview.gif)
 
 ## Installation
 
