@@ -1,27 +1,39 @@
-# React + TypeScript + Vite
+# econoMeet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+econoMeet is a React application built with TypeScript. It leverages powerful libraries like Zod for schema validation, TanStack for state management, and React Hook Form for efficient form handling. The application allows users to input the number of participants, their yearly, monthly, weekly or daily rates, then the application will display a timer and a real-time total cost of the meeting.
 
-Currently, two official plugins are available:
+## Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+econoMeet helps users understand the cost of meeting overload and to encourage the ethos of 'meet to do' rather than 'meet to meet again later'. econoMeet allows users to input the number of participants, their hourly rates, and the duration of the meeting. The application then calculates the total cost of the meeting. It also includes a timer feature that updates the cost in real time as the meeting progresses.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+-   Real-time cost calculation
+-   Timer functionality
+-   User-friendly interface
 
-- Configure the top-level `parserOptions` property like this:
+## Screenshots
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+![Preview of the application](./assets/econoMeetPreview.gif)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Installation
+
+To install the application, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/yourusername/econoMeet.git`
+2. Install the dependencies, including Zod, TanStack, React Hook Form, Tailwind CSS, Radix UI and Vite: `npm install`
+3. Start the application: `npm run dev` (or the appropriate command if you're using Vite)
+
+Please ensure you have Node.js and npm installed on your machine before running these commands.
+
+## Usage
+
+After starting the application, enter the number of participants, their yearly, monthly, weekly or daily rates, and hit start! The application will display a timer and a real-time total cost of the meeting.
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+[econoMeet is licensed under the MIT License.](https://choosealicense.com/licenses/mit/)
