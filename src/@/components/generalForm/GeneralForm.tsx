@@ -2,10 +2,13 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { Button } from '@/@/components/ui/button';
-import { CardFooter } from '@/@/components/ui/card';
-import { Input } from '@/@/components/ui/input';
-import { RadioGroup, RadioGroupItem } from '@/@/components/ui/radio-group';
+import { Button } from '@/@/components/shadcnUI/button';
+import { CardFooter } from '@/@/components/shadcnUI/card';
+import { Input } from '@/@/components/shadcnUI/input';
+import {
+    RadioGroup,
+    RadioGroupItem,
+} from '@/@/components/shadcnUI/radio-group';
 
 import {
     Form,
@@ -14,7 +17,7 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from '@/@/components/ui/form';
+} from '@/@/components/shadcnUI/form';
 
 import { ChevronLeft, ChevronRight, Info } from 'lucide-react';
 import {
@@ -27,7 +30,7 @@ import {
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-} from '../ui/tooltip';
+} from '../shadcnUI/tooltip';
 import { useNavigate } from 'react-router-dom';
 
 type GeneralFormProps = {

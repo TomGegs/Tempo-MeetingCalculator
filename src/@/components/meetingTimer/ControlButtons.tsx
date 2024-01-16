@@ -1,5 +1,5 @@
 import { PlayIcon, PauseIcon, TimerReset } from 'lucide-react';
-import { Button } from '../ui/button';
+import { Button } from '../shadcnUI/button';
 
 interface ControlButtonsProps {
     timerOn: boolean;
@@ -17,7 +17,7 @@ export const ControlButtons = ({
     handleReset,
 }: ControlButtonsProps) => {
     return (
-        <div className="grid w-full grid-cols-5 grid-rows-1 gap-x-2 ">
+        <div className="grid w-full grid-cols-5 grid-rows-1 gap-x-2">
             <div
                 className={`flex w-full flex-col text-center ${
                     !timerOn && time > 0 ? 'col-span-4' : 'col-span-5'
@@ -29,12 +29,12 @@ export const ControlButtons = ({
                     className="w-full bg-[#252525] text-neutral-500 hover:text-primary active:text-primary"
                 >
                     {!timerOn ? (
-                        <PlayIcon className="h-5 w-5 " />
+                        <PlayIcon className="h-5 w-5" />
                     ) : (
-                        <PauseIcon className="h-5 w-5 " />
+                        <PauseIcon className="h-5 w-5" />
                     )}
                 </Button>
-                <span className="mt-1 text-xs text-neutral-500">
+                <span className="mt-1 text-xs text-neutral-500 transition-all animate-in">
                     {!timerOn ? 'Start' : 'Pause'}
                 </span>
             </div>
@@ -45,7 +45,7 @@ export const ControlButtons = ({
                         variant="ghost"
                         className="w-full bg-[#252525] text-neutral-500 hover:text-primary active:text-primary"
                     >
-                        <TimerReset className="h-5 w-5 " />
+                        <TimerReset className="h-5 w-5" />
                     </Button>
                     <span className="mt-1 text-xs text-neutral-500">Reset</span>
                 </div>

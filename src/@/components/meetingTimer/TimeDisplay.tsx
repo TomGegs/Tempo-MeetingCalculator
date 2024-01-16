@@ -9,9 +9,10 @@ export const TimerDisplay = ({ time, className }: TimerDisplayProps) => {
     const [triggerOpacity, setTriggerOpacity] = useState(false);
 
     const formatTime = (time: number) => {
-        const hours = Math.floor(time / 3600);
-        const minutes = Math.floor((time % 3600) / 60);
-        const seconds = time % 60;
+        const wholeSeconds = Math.floor(time);
+        const hours = Math.floor(wholeSeconds / 3600);
+        const minutes = Math.floor((wholeSeconds % 3600) / 60);
+        const seconds = wholeSeconds % 60;
 
         const formattedHours = hours > 0 ? `${hours}:` : '';
         const formattedMinutes =
@@ -34,14 +35,14 @@ export const TimerDisplay = ({ time, className }: TimerDisplayProps) => {
     return (
         <div className={className}>
             <div
-                className={`duration-300 ${
+                className={`w-full duration-300 ${
                     triggerOpacity ? 'opacity-100' : 'opacity-0'
                 }`}
             >
                 {formatTime(time)}
             </div>
             <div
-                className={`absolute bottom-8 right-4 flex -rotate-90 text-lg tracking-wide delay-500 duration-300 ${
+                className={`left-50% absolute bottom-8 flex text-2xl tracking-wide delay-500 duration-300 ${
                     triggerOpacity ? 'opacity-100' : 'opacity-0'
                 }`}
             >

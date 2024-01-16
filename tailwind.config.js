@@ -91,12 +91,68 @@ export default {
                     '60%': { backgroundPosition: '115% 50%' },
                     '60.1%, 100%': { backgroundPosition: '115% 50%' },
                 },
+                'scroll-left': {
+                    '0%': { transform: 'translateX(0%)' },
+                    '50%': { transform: 'translateX(-5%)' },
+                    '100%': { transform: 'translateX(0%)' },
+                },
+                'scroll-right': {
+                    '0%': { transform: 'translateX(0%)' },
+                    '50%': { transform: 'translateX(5%)' },
+                    '100%': { transform: 'translateX(0%)' },
+                },
+                'line-to-box': {
+                    '0%': {
+                        height: '1px',
+                        width: '100%',
+                        backgroundColor: 'black',
+                    },
+                    '50%': {
+                        height: '100%',
+                        width: '100%',
+                        backgroundColor: 'black',
+                    },
+                    '100%': {
+                        height: '100%',
+                        width: '100%',
+                        backgroundColor: 'transparent',
+                    },
+                },
+                'fade-in': {
+                    '0%': { opacity: 0 },
+                    '100%': { opacity: 1 },
+                },
+                'fill-estimation-box': {
+                    '0%': {
+                        height: '0%',
+                        border: 'none',
+                        backgroundColor: '#5d9ada',
+                    },
+                    '100%': {
+                        height: '100%',
+                        border: 'white 1px solid',
+                        backgroundColor: '#5d9ada',
+                    },
+                },
+                'text-estimation-box': {
+                    '0%, 75%': {
+                        color: 'white',
+                    },
+                    '98%': { color: '#191919' },
+                    '100%': { color: '#191919' },
+                },
             },
             animation: {
+                'scroll-left': 'scroll-left 50s ease-in-out infinite',
+                'scroll-right': 'scroll-right 50s ease-in-out infinite',
                 'accordion-down': 'accordion-down 0.4s ease-in-out',
                 'accordion-up': 'accordion-up 0.4s ease-in-out',
                 flip: 'flip 2s linear infinite',
                 gradient: 'gradient 2s ease-in-out infinite',
+                'line-to-box': 'line-to-box 2s linear forwards',
+                'fade-in': 'fade-in 2s linear 2s forwards',
+                'fill-estimation-box': 'fill-estimation-box 1s linear',
+                'text-estimation-box': 'text-estimation-box 1s linear',
             },
             animationDelay: {
                 '4s': '4000ms',
