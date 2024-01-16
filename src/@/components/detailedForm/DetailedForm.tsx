@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { Button } from '@/@/components/ui/button';
-import { Input } from '@/@/components/ui/input';
+import { Button } from '@/@/components/shadcnUI/button';
+import { Input } from '@/@/components/shadcnUI/input';
 
 import {
     Form,
@@ -11,7 +11,7 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from '@/@/components/ui/form';
+} from '@/@/components/shadcnUI/form';
 
 import { Info, Plus } from 'lucide-react';
 import {
@@ -24,14 +24,14 @@ import {
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-} from '../ui/tooltip';
+} from '../shadcnUI/tooltip';
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from '../ui/select';
+} from '../shadcnUI/select';
 
 export const DetailedForm = () => {
     const form = useForm<DetailedFormValues>({

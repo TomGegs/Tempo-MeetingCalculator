@@ -21,7 +21,10 @@ export const useTimerCalculator = ({ formData }: useTimerCalculatorProps) => {
     const [costTracker, setCostTracker] = useState<number>(0);
     const [time, setTime] = useState<number>(0);
     const [timerOn, setTimerOn] = useState<boolean>(false);
+    const [tenMinBlock, setTenMinBlock] = useState<number>(0);
+    const [resetAnimation, setResetAnimation] = useState<number>(0);
 
+    //Salary Per Second Logic
     useEffect(() => {
         function calculateSalaryPerSecond() {
             if (!formData) return;
@@ -56,25 +59,26 @@ export const useTimerCalculator = ({ formData }: useTimerCalculatorProps) => {
 
     //Timer Logic
     useEffect(() => {
-        let intervalId: string | number | NodeJS.Timeout | undefined;
+        let intervalId: number | NodeJS.Timeout | undefined;
         if (timerOn) {
             intervalId = setInterval(() => {
-                setTime((prevTime) => prevTime + 1);
-            }, 1000);
+                setTime((prevTime) => prevTime + 0.1); // Increment by 0.1 every 0.1 seconds
+            }, 100);
         }
         return () => clearInterval(intervalId);
     }, [timerOn]);
 
     //Cost Tracker Logic
     useEffect(() => {
-        let intervalId: string | number | NodeJS.Timeout | undefined;
+        let intervalId: number | NodeJS.Timeout | undefined;
+        const salaryPerInterval = salaryPerSecond / 10; // Increment by 1/10th of salary per second every 0.1 seconds
         if (timerOn) {
             intervalId = setInterval(() => {
                 setCostTracker(
                     (prevSalaryPerSecond) =>
-                        prevSalaryPerSecond + salaryPerSecond
+                        prevSalaryPerSecond + salaryPerInterval
                 );
-            }, 1000);
+            }, 100);
         }
         return () => clearInterval(intervalId);
     }, [timerOn]);
@@ -91,8 +95,15 @@ export const useTimerCalculator = ({ formData }: useTimerCalculatorProps) => {
         setCostOfMeeting(costTracker);
         setTime(0);
         setCostTracker(0);
+        setResetAnimation(resetAnimation + 1);
         setTimerOn(false);
-    }, [time, setMeetingFinishedTime, costTracker, setCostOfMeeting]);
+    }, [
+        time,
+        setMeetingFinishedTime,
+        costTracker,
+        setCostOfMeeting,
+        resetAnimation,
+    ]);
 
     //Meeting Cost Logic
     useEffect(() => {
@@ -106,6 +117,13 @@ export const useTimerCalculator = ({ formData }: useTimerCalculatorProps) => {
         setCostOfMeeting,
     ]);
 
+    //Estimated Meeting Cost Logic
+    useEffect(() => {
+        const tenMinBlockEst = salaryPerSecond * formData.numPeople * 600; // Salary per second multiplied by 10 min in seconds
+        setTenMinBlock(tenMinBlockEst);
+    }, [salaryPerSecond, formData.numPeople]);
+
+    //Return Values
     return {
         salaryPerSecond,
         costOfMeeting,
@@ -119,5 +137,7 @@ export const useTimerCalculator = ({ formData }: useTimerCalculatorProps) => {
         handleStart,
         handlePauseResume,
         handleReset,
+        tenMinBlock,
+        resetAnimation,
     };
 };

@@ -114,7 +114,7 @@
     background-image: radial-gradient(
         circle at 105% 115%,
         transparent 1.1rem,
-        #191919 calc(1rem + 2px)
+        var(--secondary) calc(1rem + 2px)
     );
     rotate: -180deg;
 }

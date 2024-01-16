@@ -2,7 +2,7 @@
 
 import { ColumnDef } from '@tanstack/react-table';
 import { DetailedFormValues } from '../../utils/INITIAL_DATA';
-import { Button } from '../../ui/button';
+import { Button } from '../../shadcnUI/button';
 import { XCircle } from 'lucide-react';
 
 export const columns: ColumnDef<DetailedFormValues>[] = [

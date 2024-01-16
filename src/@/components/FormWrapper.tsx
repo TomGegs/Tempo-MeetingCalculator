@@ -6,28 +6,33 @@ import {
     CardDescription,
     CardHeader,
     CardTitle,
-} from '@/@/components/ui/card';
+} from '@/@/components/shadcnUI/card';
 
 import {
     Tabs,
     TabsContent,
     TabsList,
     TabsTrigger,
-} from '@/@/components/ui/tabs';
+} from '@/@/components/shadcnUI/tabs';
 import { Lock, X } from 'lucide-react';
 import { GeneralForm } from './generalForm/GeneralForm';
 import { DetailedForm } from './detailedForm/DetailedForm';
 import { TableWrapper } from './detailedForm/table/TableWrapper';
 import { SetStateAction, useState } from 'react';
-import { SheetClose } from './ui/sheet';
+import { SheetClose } from './shadcnUI/sheet';
 import { FeatureComing } from './FeatureComing';
 
 type FormWrapperProps = {
     setLoading: Dispatch<SetStateAction<boolean>>;
     loading: boolean;
+    screenMobile?: boolean;
 };
 
-export const FormWrapper = ({ setLoading, loading }: FormWrapperProps) => {
+export const FormWrapper = ({
+    setLoading,
+    loading,
+    screenMobile,
+}: FormWrapperProps) => {
     const [currentTab, setCurrentTab] = useState('general');
 
     const handleTabChange = (value: SetStateAction<string>) => {
@@ -41,10 +46,15 @@ export const FormWrapper = ({ setLoading, loading }: FormWrapperProps) => {
             }`}
         >
             <Card className="relative border-0 bg-card">
-                <SheetClose className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary md:hidden">
-                    <X className="h-4 w-4" />
-                    <span className="sr-only">Close</span>
-                </SheetClose>
+                {}{' '}
+                {screenMobile ? (
+                    <SheetClose className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary md:hidden">
+                        <X className="h-4 w-4" />
+                        <span className="sr-only">Close</span>
+                    </SheetClose>
+                ) : (
+                    ''
+                )}
                 <CardHeader>
                     <CardTitle>
                         {currentTab === 'general'
@@ -57,7 +67,6 @@ export const FormWrapper = ({ setLoading, loading }: FormWrapperProps) => {
                             : 'Enter details per participant'}
                     </CardDescription>
                 </CardHeader>
-
                 {/* Tab options */}
                 <Tabs
                     defaultValue="general"
