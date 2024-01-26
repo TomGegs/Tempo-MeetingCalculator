@@ -28,11 +28,7 @@ type FormWrapperProps = {
     screenMobile?: boolean;
 };
 
-export const FormWrapper = ({
-    setLoading,
-    loading,
-    screenMobile,
-}: FormWrapperProps) => {
+export const FormWrapper = ({ setLoading, loading }: FormWrapperProps) => {
     const [currentTab, setCurrentTab] = useState('general');
 
     const handleTabChange = (value: SetStateAction<string>) => {
@@ -46,15 +42,11 @@ export const FormWrapper = ({
             }`}
         >
             <Card className="relative border-0 bg-card">
-                {}{' '}
-                {screenMobile ? (
-                    <SheetClose className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary md:hidden">
-                        <X className="h-4 w-4" />
-                        <span className="sr-only">Close</span>
-                    </SheetClose>
-                ) : (
-                    ''
-                )}
+                <SheetClose className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:text-purple-500 hover:opacity-100 active:outline-none active:ring-2 active:ring-ring active:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary ">
+                    <X className="h-4 w-4" />
+                    <span className="sr-only">Close</span>
+                </SheetClose>
+
                 <CardHeader>
                     <CardTitle>
                         {currentTab === 'general'
