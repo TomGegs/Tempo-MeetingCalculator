@@ -86,7 +86,7 @@ export const DetailsDisplay = ({
             className="relative flex h-full w-full flex-col"
         >
             <ScrollArea className="h-full w-full">
-                <div className="grid h-full w-full grid-flow-col-dense grid-rows-1 items-center justify-between gap-x-2 overflow-hidden">
+                <div className="flex h-full w-full flex-row items-center justify-between gap-x-2 overflow-hidden">
                     {displayBlocks.map(
                         (
                             { cost, label, animationDuration, animationDelay },
@@ -99,7 +99,7 @@ export const DetailsDisplay = ({
                                         ? latestBlockRef
                                         : null
                                 }
-                                className="relative flex h-full w-full min-w-[48px] flex-col justify-center rounded-xl bg-primary p-2 text-center"
+                                className="relative flex h-full w-full min-w-[48px]  flex-col justify-center rounded-xl bg-primary p-2 text-center"
                             >
                                 <div
                                     className={`absolute bottom-0 left-0 h-full w-full animate-fill-estimation-box rounded-xl  bg-primary fill-mode-forwards`}

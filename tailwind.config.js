@@ -91,6 +91,32 @@ export default {
                     '60%': { backgroundPosition: '115% 50%' },
                     '60.1%, 100%': { backgroundPosition: '115% 50%' },
                 },
+                hinge: {
+                    '0%, 25%': { transform: 'rotate(0)' },
+                    '60%': { transform: 'rotate(80deg)' },
+                    '60.1%, 100%': { transform: 'rotate(90deg)' },
+                },
+                gradientDiagonal: {
+                    '0%': {
+                        opacity: 0,
+                        backgroundPosition: '100% 100%',
+                        backgroundSize: '200% 200%',
+                    },
+                    '25%': {
+                        opacity: 0.15,
+                        backgroundPosition: '100% 100%',
+                        backgroundSize: '200% 200%',
+                    },
+                    '80%': {
+                        backgroundPosition: '0% 0%',
+                        backgroundSize: '200% 200%',
+                    },
+                    '100%': {
+                        opacity: 0,
+                        backgroundPosition: '0% 0%',
+                        backgroundSize: '500% 500%',
+                    },
+                },
                 'scroll-left': {
                     '0%': { transform: 'translateX(0%)' },
                     '50%': { transform: 'translateX(-5%)' },
@@ -148,7 +174,9 @@ export default {
                 'accordion-down': 'accordion-down 0.4s ease-in-out',
                 'accordion-up': 'accordion-up 0.4s ease-in-out',
                 flip: 'flip 2s linear infinite',
+                hinge: 'hinge 2s linear',
                 gradient: 'gradient 2s ease-in-out infinite',
+                gradientDiagonal: 'gradientDiagonal 5s ease-out infinite',
                 'line-to-box': 'line-to-box 2s linear forwards',
                 'fade-in': 'fade-in 2s linear 2s forwards',
                 'fill-estimation-box': 'fill-estimation-box 1s linear',
