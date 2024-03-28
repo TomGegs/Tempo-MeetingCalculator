@@ -59,7 +59,9 @@ export function Home() {
                             TEMPO
                         </h1>
                     </div>
-                    <p className="text-sm lg:text-lg">Fast meetings, better outcomes.</p>
+                    <p className="text-sm lg:text-lg">
+                        Fast meetings, better outcomes.
+                    </p>
                 </div>
                 <Sheet>
                     <SheetTrigger asChild>
@@ -71,7 +73,7 @@ export function Home() {
                                 className="mx-auto flex w-fit items-center rounded-xl border border-purple-400 bg-primary px-6 py-8 text-xl text-secondary shadow-sm shadow-[white] transition-all duration-200 hover:bg-purple-500 hover:text-white  active:-translate-y-0.5 active:scale-[0.99] lg:w-[80%] lg:py-10"
                             >
                                 <span className="mr-2 hidden lg:block">
-                                    Time To Go
+                                    Get Going
                                 </span>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
