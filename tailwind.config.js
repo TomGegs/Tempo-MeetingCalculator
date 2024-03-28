@@ -51,6 +51,12 @@ export default {
                     foreground: 'var(--card-foreground)',
                 },
             },
+            dropShadow: {
+                blueGlow: '3px 3px 3px #5d9ada',
+                purpleGlow: '3px 3px 3px #A855F7',
+                whiteGlow: '3px 3px 3px white',
+            },
+
             screens: {
                 tall: {
                     raw: `only screen and (max-height: 960px) and (max-width: 480px)`,
@@ -169,8 +175,8 @@ export default {
                 },
             },
             animation: {
-                'scroll-left': 'scroll-left 50s ease-in-out infinite',
-                'scroll-right': 'scroll-right 50s ease-in-out infinite',
+                'scroll-left': 'scroll-left 80s ease-in-out infinite',
+                'scroll-right': 'scroll-right 80s ease-in-out infinite',
                 'accordion-down': 'accordion-down 0.4s ease-in-out',
                 'accordion-up': 'accordion-up 0.4s ease-in-out',
                 flip: 'flip 2s linear infinite',

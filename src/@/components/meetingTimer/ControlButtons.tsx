@@ -17,39 +17,52 @@ export const ControlButtons = ({
     handleReset,
 }: ControlButtonsProps) => {
     return (
-        <div className="grid w-full grid-cols-5 grid-rows-1 gap-x-2">
+        <div className="relative flex w-full items-center  gap-x-2">
+            {/* Start/Pause Button */}
             <div
-                className={`flex w-full flex-col text-center ${
-                    !timerOn && time > 0 ? 'col-span-4' : 'col-span-5'
+                className={`flex flex-grow flex-col text-center transition-all duration-500 ${
+                    !timerOn && time > 0 ? 'pr-40' : 'pr-0'
                 }`}
             >
                 <Button
                     onClick={!timerOn ? handleStart : handlePauseResume}
                     variant="ghost"
-                    className="w-full bg-[#252525] text-neutral-500 hover:text-primary active:text-primary"
+                    className="group w-full bg-[#252525] text-neutral-500 hover:text-primary active:text-primary md:py-12"
                 >
                     {!timerOn ? (
-                        <PlayIcon className="h-5 w-5" />
+                        <PlayIcon className="h-5 w-5 text-secondary group-hover:text-primary md:h-10 md:w-10" />
                     ) : (
-                        <PauseIcon className="h-5 w-5" />
+                        <PauseIcon className="h-5 w-5 text-secondary group-hover:text-primary md:h-10 md:w-10" />
                     )}
                 </Button>
-                <span className="mt-1 text-xs text-neutral-500 transition-all animate-in">
+                <span className="mt-1 text-xs text-secondary md:text-xl md:font-black">
                     {!timerOn ? 'Start' : 'Pause'}
                 </span>
             </div>
-            {!timerOn && time > 0 && (
-                <div className="col-span-1 flex flex-col text-center">
-                    <Button
-                        onClick={handleReset}
-                        variant="ghost"
-                        className="w-full bg-[#252525] text-neutral-500 hover:text-primary active:text-primary"
-                    >
-                        <TimerReset className="h-5 w-5" />
-                    </Button>
-                    <span className="mt-1 text-xs text-neutral-500">Reset</span>
-                </div>
-            )}
+
+            {/* Reset button with absolute positioning */}
+            <div
+                className={`absolute right-0 top-0 flex origin-right  flex-col transition-all duration-500 ${
+                    !timerOn && time > 0
+                        ? 'scale-x-100 opacity-100'
+                        : 'scale-x-0 opacity-0'
+                }`}
+            >
+                <Button
+                    onClick={handleReset}
+                    variant="ghost"
+                    className="group bg-[#252525] px-12 text-neutral-500 hover:text-primary active:text-primary md:py-12"
+                >
+                    <TimerReset className="h-5 w-5 text-secondary group-hover:text-primary md:h-10 md:w-10" />
+                </Button>
+                <span
+                    className={`mx-auto mt-1 text-xs text-secondary md:text-xl ${
+                        !timerOn && time > 0 ? ' opacity-100' : ' opacity-0'
+                    }`}
+                >
+                    Reset
+                </span>
+            </div>
         </div>
     );
 };

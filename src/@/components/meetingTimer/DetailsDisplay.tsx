@@ -99,7 +99,7 @@ export const DetailsDisplay = ({
                                         ? latestBlockRef
                                         : null
                                 }
-                                className="relative flex h-full w-full min-w-[48px]  flex-col justify-center rounded-xl bg-primary p-2 text-center"
+                                className="relative flex h-full w-full min-w-[48px]  flex-col justify-center rounded-xl bg-primary p-2 text-center lg:p-10"
                             >
                                 <div
                                     className={`absolute bottom-0 left-0 h-full w-full animate-fill-estimation-box rounded-xl  bg-primary fill-mode-forwards`}
@@ -112,7 +112,7 @@ export const DetailsDisplay = ({
                                     }}
                                 />
                                 <div
-                                    className="z-10 flex h-full w-full animate-text-estimation-box flex-col items-center justify-start text-sm font-semibold tracking-tight text-secondary fill-mode-forwards"
+                                    className="z-10 flex h-full w-full animate-text-estimation-box flex-col items-center justify-start text-sm font-semibold tracking-tight text-secondary fill-mode-forwards lg:text-2xl"
                                     style={{
                                         animationDuration,
                                         animationDelay,

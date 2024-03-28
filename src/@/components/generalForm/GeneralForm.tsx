@@ -328,7 +328,7 @@ export const GeneralForm = ({ setLoading, loading }: GeneralFormProps) => {
                 <CardFooter>
                     <Button
                         variant="ghost"
-                        className="z-20 mx-auto flex w-full border bg-purple-500 text-white shadow-sm transition-all active:-translate-y-0.5 active:scale-95"
+                        className="z-20 mx-auto flex w-full border bg-primary text-secondary shadow-sm transition-all hover:bg-purple-500 hover:text-white active:-translate-y-0.5 active:scale-95"
                     >
                         {loading ? 'Loading...' : 'Start Meeting'}
                     </Button>
