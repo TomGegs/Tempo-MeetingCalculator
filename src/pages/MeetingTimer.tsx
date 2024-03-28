@@ -28,7 +28,7 @@ export const MeetingTimer = () => {
 
     return (
         <div
-            className={`grid h-[calc(100svh)] w-full select-none grid-cols-1 grid-rows-[5fr_5fr__1fr_1fr] gap-y-4 bg-black p-4 duration-1000 animate-in fade-in md:h-[100dvh]`}
+            className={`grid h-[calc(100svh)]  w-full select-none grid-cols-1 grid-rows-[5fr_5fr__1fr_1fr] gap-y-4 self-center bg-black p-4 duration-1000 animate-in fade-in md:h-[100dvh]`}
         >
             {/* Money Card*/}
             <div className="relative flex h-full w-full flex-col items-center justify-center">
