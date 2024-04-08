@@ -11,7 +11,7 @@ export function LogoAnimation() {
                     <Spline scene="https://prod.spline.design/yi2vvtz9L2BefP3l/scene.splinecode" />
                 </div>
             ) : (
-                <div className="flex scale-50">
+                <div className="flex scale-50 ">
                     <Spline scene="https://prod.spline.design/UwHyViNkfM2tUpNV/scene.splinecode" />
                 </div>
             )}

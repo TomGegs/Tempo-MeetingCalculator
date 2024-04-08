@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 
 import { FormWrapper } from '@/@/components/FormWrapper';
-// import { LogoAnimation } from '@/@/ui/LogoAnimation';
+import { LogoAnimation } from '@/@/ui/LogoAnimation';
 
 import { useIsMobile } from '@/@/components/hooks/useIsMobile';
 
@@ -29,31 +29,17 @@ export function Home() {
                     : 'bg-transparent'
             }`}
         >
-            {/* <div className='h-64'>
-                    <LogoAnimation />
-                </div> */}
             <div className="relative z-10 flex h-full w-full -translate-y-8 flex-col items-center justify-center overflow-hidden p-10 text-center text-white opacity-0 delay-1000 duration-200 animate-out fade-in-100 fill-mode-forwards lg:h-fit lg:max-w-[600px]">
-                <div className="flex flex-col justify-center gap-y-6 p-16 lg:p-32">
-                    <div className="flex flex-row">
-                        <div className="relative h-12 w-12 lg:h-24 lg:w-24">
-                            <img
-                                src={boltIcon}
-                                alt="Lightning bolt"
-                                className="absolute inset-0 h-full w-full object-contain transition-opacity duration-1000"
-                                style={{ opacity: isHovered ? 0 : 1 }}
-                            />
-                            <img
-                                src={boltIconInverted}
-                                alt="Inverted Lightning bolt"
-                                className="absolute inset-0 h-full w-full object-contain transition-opacity duration-1000"
-                                style={{ opacity: isHovered ? 1 : 0 }}
-                            />
-                        </div>
+                <div className="h-fit lg:h-64">
+                    <LogoAnimation />
+                </div>
+                <div className="flex flex-col justify-center gap-y-6 pb-10 pt-8 lg:pb-16 lg:pt-32">
+                    <div className="flex flex-row justify-center">
                         <h1
-                            className={`text-5xl font-semibold italic transition-all duration-1000 lg:text-8xl ${
+                            className={`text-center text-5xl font-black italic transition-all duration-1000 lg:text-8xl ${
                                 isHovered
-                                    ? 'text-secondary drop-shadow-purpleGlow'
-                                    : 'drop-shadow-blueGlow text-white'
+                                    ? 'text-secondary drop-shadow-purpleGlow '
+                                    : 'text-white drop-shadow-blueGlow'
                             }  `}
                         >
                             TEMPO
@@ -70,25 +56,25 @@ export function Home() {
                                 onMouseEnter={() => setIsHovered(true)}
                                 onMouseLeave={() => setIsHovered(false)}
                                 variant="outline"
-                                className="mx-auto flex w-fit items-center rounded-xl border border-purple-400 bg-primary px-6 py-8 text-xl text-secondary shadow-sm shadow-[white] transition-all duration-200 hover:bg-purple-500 hover:text-white  active:-translate-y-0.5 active:scale-[0.99] lg:w-[80%] lg:py-10"
+                                className="group mx-auto flex w-fit flex-row items-center justify-center rounded-3xl border border-purple-400 bg-primary px-6 py-8 text-xl text-secondary shadow-sm shadow-[white] transition-all duration-200 hover:bg-purple-500 hover:text-white  active:-translate-y-0.5 active:scale-[0.99] lg:w-[80%] lg:py-10"
                             >
-                                <span className="mr-2 hidden lg:block">
-                                    Get Going
+                                <span className="ml-2 hidden justify-center font-black italic group-hover:animate-pulse lg:flex">
+                                    Get Started{' '}
                                 </span>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth="1.5"
-                                    stroke="currentColor"
-                                    className="h-6 w-6 "
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                                <span className="relative flex h-12 w-12 items-center self-center">
+                                    <img
+                                        src={boltIcon}
+                                        alt="Lightning bolt"
+                                        className="absolute inset-0 bottom-0 h-full w-full object-contain transition-opacity duration-200 group-hover:animate-pulse"
+                                        style={{ opacity: isHovered ? 1 : 0 }}
                                     />
-                                </svg>
+                                    <img
+                                        src={boltIconInverted}
+                                        alt="Inverted Lightning bolt"
+                                        className="absolute inset-0 bottom-0 h-full w-full object-contain transition-opacity duration-200"
+                                        style={{ opacity: isHovered ? 0 : 1 }}
+                                    />
+                                </span>
                             </Button>
                         </div>
                     </SheetTrigger>

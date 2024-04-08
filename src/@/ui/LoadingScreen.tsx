@@ -38,8 +38,8 @@ const LoadingScreen = () => {
                         className="flex items-center justify-center uppercase"
                         style={{ animationDelay: `${index * 0.5}s` }}
                     >
-                        <div className="animate-line-to-box absolute inset-0 z-10" />
-                        <span className="animate-fade-in absolute inset-0 z-20 opacity-0">
+                        <div className="absolute inset-0 z-10 animate-line-to-box" />
+                        <span className="absolute inset-0 z-20 animate-fade-in opacity-0">
                             {letter}
                         </span>
                     </div>
