@@ -24,61 +24,48 @@ export const DetailsDisplay = ({
             animationDuration: string;
         }[]
     >([]);
-    const [prevBlocksLength, setPrevBlocksLength] = useState(0); // Track array length to trigger auto-scrolling
-    const latestBlockRef = useRef(null); // Ref to the newly generated block
+    const latestBlockRef = useRef(null);
 
     useEffect(() => {
         const newBlocks = [];
-        const blockIncrement = 10;
-        const animationDuration = blockIncrement; // Each block's animation duration in seconds
+        const blockIncrement = 10; // Increment in minutes
+        const animationDurationInSeconds = 600; // 10 minutes in seconds
 
+        // Determine the maximum duration to consider for block generation
         let currentMaxDuration = Math.max(
             maxDuration,
-            currentTime + blockIncrement
+            Math.ceil(currentTime / 600) * 10
         );
-        // Update currentMaxDuration if currentTime exceeds it
-        if (currentTime / 60 > maxDuration) {
-            currentMaxDuration = Math.ceil(currentTime / 600) * 10;
-        }
+        currentMaxDuration = Math.min(currentMaxDuration, 240); // Cap at 240 minutes
 
         for (
             let i = blockIncrement;
             i <= currentMaxDuration;
             i += blockIncrement
         ) {
-            // Calculate the delay for each block
-            // The first block starts immediately (0s delay), and each subsequent block
-            // starts after the previous block's animation has completed
+            const delayTimeInSeconds =
+                (i / blockIncrement - 1) * animationDurationInSeconds;
 
-            let delayTime = 0;
-            if (i <= maxDuration) {
-                delayTime = (i / blockIncrement - 1) * animationDuration;
-            }
-            //create the array of blocks
             newBlocks.push({
                 cost: tenMinBlock * (i / blockIncrement),
                 label: `${i}m`,
-                animationDuration: `${animationDuration}s`,
-                animationDelay: `${delayTime}s`,
+                animationDuration: `${animationDurationInSeconds}s`,
+                animationDelay: `${delayTimeInSeconds}s`,
             });
         }
 
-        // Update the displayBlocks array
         setDisplayBlocks(newBlocks);
-        // Change the previous length of the displayBlocks array to trigger auto-scrolling
-        setPrevBlocksLength(displayBlocks.length);
-    }, [maxDuration, tenMinBlock, currentTime]);
+    }, [maxDuration, tenMinBlock, currentTime, resetAnimation]);
 
-    // Auto-scroll to the latest block
     useEffect(() => {
-        if (latestBlockRef.current && displayBlocks.length > prevBlocksLength) {
+        if (latestBlockRef.current) {
             (latestBlockRef.current as HTMLElement)?.scrollIntoView({
                 behavior: 'smooth',
                 block: 'nearest',
                 inline: 'end',
             });
         }
-    }, [displayBlocks, prevBlocksLength]);
+    }, [displayBlocks]);
 
     return (
         <div
@@ -99,10 +86,10 @@ export const DetailsDisplay = ({
                                         ? latestBlockRef
                                         : null
                                 }
-                                className="relative flex h-full w-full min-w-[48px]  flex-col justify-center rounded-xl bg-primary p-2 text-center lg:p-10"
+                                className="relative flex h-full w-full min-w-[48px] flex-col justify-center rounded-xl bg-primary p-2 text-center lg:p-10"
                             >
                                 <div
-                                    className={`absolute bottom-0 left-0 h-full w-full animate-fill-estimation-box rounded-xl  bg-primary fill-mode-forwards`}
+                                    className={`absolute bottom-0 left-0 h-full w-full animate-fill-estimation-box rounded-xl bg-primary fill-mode-forwards`}
                                     style={{
                                         animationDuration,
                                         animationDelay,
